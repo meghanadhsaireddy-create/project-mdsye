@@ -18,8 +18,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 # ── Page Config ──────────────────────────
 st.set_page_config(
-    page_title="🇮🇳 India Food Trend Agent",
-    page_icon="🍛",
+    page_title="🍽 MenuPulse — India Food Intelligence",
+    page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -27,16 +27,16 @@ st.set_page_config(
 # ── Custom CSS ────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-html, body, [class*="css"] { font-family: 'Syne', sans-serif; }
+html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 
-.main { background: #FAF7F2; }
+.main { background: #F0F4F8; }
 
 /* Header banner */
 .hero-banner {
-    background: linear-gradient(135deg, #1C1410 0%, #2d1f18 100%);
-    border-bottom: 3px solid #FF6B00;
+    background: linear-gradient(135deg, #0F2044 0%, #1A3A6E 100%);
+    border-bottom: 3px solid #3B82F6;
     padding: 20px 28px;
     border-radius: 14px;
     margin-bottom: 24px;
@@ -45,7 +45,7 @@ html, body, [class*="css"] { font-family: 'Syne', sans-serif; }
     gap: 16px;
 }
 .hero-title { font-size: 28px; font-weight: 800; color: #fff; margin: 0; }
-.hero-title span { color: #FF9B45; }
+.hero-title span { color: #60A5FA; }
 .hero-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.15em; text-transform: uppercase; }
 
 /* Metric cards */
@@ -53,20 +53,20 @@ html, body, [class*="css"] { font-family: 'Syne', sans-serif; }
     background: white;
     border-radius: 14px;
     padding: 18px;
-    border: 1.5px solid #EAE0D5;
-    border-top: 3px solid #FF6B00;
+    border: 1.5px solid #CBD5E1;
+    border-top: 3px solid #3B82F6;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     text-align: center;
 }
-.metric-label { font-size: 11px; font-weight: 600; color: #78716C; text-transform: uppercase; letter-spacing: 0.1em; }
-.metric-value { font-size: 28px; font-weight: 800; color: #1C1410; margin: 6px 0; }
-.metric-delta { font-size: 12px; color: #138808; font-weight: 600; }
+.metric-label { font-size: 11px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.1em; }
+.metric-value { font-size: 28px; font-weight: 800; color: #0F2044; margin: 6px 0; }
+.metric-delta { font-size: 12px; color: #2563EB; font-weight: 600; }
 
 /* Dish card */
 .dish-card {
     background: white;
     border-radius: 16px;
-    border: 1.5px solid #EAE0D5;
+    border: 1.5px solid #CBD5E1;
     padding: 20px;
     margin-bottom: 16px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
@@ -79,14 +79,14 @@ html, body, [class*="css"] { font-family: 'Syne', sans-serif; }
     top: 0; left: 0; right: 0;
     height: 4px;
 }
-.dish-card.margin::before  { background: linear-gradient(90deg, #138808, #00796B); }
-.dish-card.premium::before { background: linear-gradient(90deg, #6D28D9, #A855F7); }
-.dish-card.insta::before   { background: linear-gradient(90deg, #D81B60, #F97316); }
-.dish-card.performer::before { background: linear-gradient(90deg, #FF6B00, #F5A623); }
+.dish-card.margin::before  { background: linear-gradient(90deg, #1D4ED8, #3B82F6); }
+.dish-card.premium::before { background: linear-gradient(90deg, #4338CA, #818CF8); }
+.dish-card.insta::before   { background: linear-gradient(90deg, #0369A1, #38BDF8); }
+.dish-card.performer::before { background: linear-gradient(90deg, #475569, #94A3B8); }
 
-.dish-name  { font-size: 19px; font-weight: 800; color: #1C1410; }
-.dish-price { font-size: 17px; font-weight: 800; color: #FF6B00; font-family: monospace; }
-.dish-desc  { font-size: 13px; color: #4B5563; line-height: 1.7; margin: 10px 0; }
+.dish-name  { font-size: 19px; font-weight: 800; color: #0F2044; }
+.dish-price { font-size: 17px; font-weight: 800; color: #2563EB; font-family: monospace; }
+.dish-desc  { font-size: 13px; color: #475569; line-height: 1.7; margin: 10px 0; }
 .dish-badge {
     display: inline-block;
     padding: 3px 12px; border-radius: 20px;
@@ -94,25 +94,25 @@ html, body, [class*="css"] { font-family: 'Syne', sans-serif; }
     text-transform: uppercase; letter-spacing: 0.06em;
     margin-bottom: 8px;
 }
-.badge-margin   { background: #E8F5E9; color: #138808; }
-.badge-premium  { background: #EDE9FE; color: #6D28D9; }
-.badge-insta    { background: #FCE4EC; color: #D81B60; }
-.badge-performer { background: #FFF4EC; color: #CC5200; }
+.badge-margin   { background: #DBEAFE; color: #1D4ED8; }
+.badge-premium  { background: #E0E7FF; color: #4338CA; }
+.badge-insta    { background: #E0F2FE; color: #0369A1; }
+.badge-performer { background: #F1F5F9; color: #475569; }
 
-.demand-high   { background: #E8F5E9; color: #138808; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
-.demand-medium { background: #FFF4EC; color: #CC5200; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
-.demand-low    { background: #F5F0EB; color: #78716C; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+.demand-high   { background: #DBEAFE; color: #1D4ED8; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+.demand-medium { background: #E0E7FF; color: #4338CA; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+.demand-low    { background: #F1F5F9; color: #64748B; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
 
 /* Insight box */
 .insight-box {
-    background: #1C1410;
+    background: #0F2044;
     color: white;
     border-radius: 14px;
     padding: 20px 24px;
     margin-top: 20px;
 }
-.insight-lbl { font-size: 10px; color: #F5A623; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
-.insight-txt { font-size: 14px; color: #D1D5DB; line-height: 1.8; }
+.insight-lbl { font-size: 10px; color: #60A5FA; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.insight-txt { font-size: 14px; color: #CBD5E1; line-height: 1.8; }
 
 /* Hashtag chip */
 .htag {
@@ -121,26 +121,26 @@ html, body, [class*="css"] { font-family: 'Syne', sans-serif; }
     font-size: 11px; font-weight: 700;
     margin: 3px;
 }
-.htag-viral  { background: #FCE4EC; color: #D81B60; border: 1px solid #D81B60; }
-.htag-hot    { background: #FFF4EC; color: #CC5200; border: 1px solid #FF6B00; }
-.htag-rising { background: #E8F5E9; color: #138808; border: 1px solid #138808; }
-.htag-new    { background: #E0F2F1; color: #00796B; border: 1px solid #00796B; }
+.htag-viral  { background: #DBEAFE; color: #1D4ED8; border: 1px solid #3B82F6; }
+.htag-hot    { background: #E0E7FF; color: #4338CA; border: 1px solid #818CF8; }
+.htag-rising { background: #E0F2FE; color: #0369A1; border: 1px solid #38BDF8; }
+.htag-new    { background: #F0F9FF; color: #0284C7; border: 1px solid #7DD3FC; }
 
 /* Section title */
 .section-title {
     font-size: 11px; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.2em;
-    color: #78716C; margin: 20px 0 12px;
+    color: #64748B; margin: 20px 0 12px;
     display: flex; align-items: center; gap: 10px;
 }
-.section-title::after { content: ''; flex: 1; height: 1px; background: #EAE0D5; }
+.section-title::after { content: ''; flex: 1; height: 1px; background: #CBD5E1; }
 </style>
 """, unsafe_allow_html=True)
 
 
 # ── Sidebar ───────────────────────────────
 with st.sidebar:
-    st.markdown("### 🇮🇳 Food Trend Agent")
+    st.markdown("### 📊 MenuPulse")
     st.markdown("---")
 
     city = st.selectbox("📍 City", [
@@ -184,10 +184,10 @@ if "report_txt" not in st.session_state: st.session_state.report_txt = None
 # ── Hero Banner ───────────────────────────
 st.markdown("""
 <div class="hero-banner">
-  <div style="font-size:40px">🍛</div>
+  <div style="font-size:40px">📊</div>
   <div>
-    <div class="hero-title">भारत <span>FoodTrend</span> Agent</div>
-    <div class="hero-sub">· HackSHEK · Every Indian State</div>
+    <div class="hero-title">Menu<span>Pulse</span></div>
+    <div class="hero-sub">· India Food Intelligence · AI-Powered Trend Engine</div>
   </div>
 </div>
 """, unsafe_allow_html=True)
@@ -217,10 +217,10 @@ if st.session_state.scraped and not st.session_state.analysis:
         if google:
             for r in google[:8]:
                 st.markdown(f"""
-                <div style="background:white;border:1px solid #EAE0D5;border-left:3px solid #FF6B00;
+                <div style="background:white;border:1px solid #CBD5E1;border-left:3px solid #3B82F6;
                             border-radius:8px;padding:10px 14px;margin-bottom:8px;">
-                    <div style="font-weight:700;font-size:13px;color:#1C1410">{r.get('title','')}</div>
-                    <div style="font-size:11px;color:#78716C;margin-top:4px">{r.get('snippet','')[:120]}</div>
+                    <div style="font-weight:700;font-size:13px;color:#0F2044">{r.get('title','')}</div>
+                    <div style="font-size:11px;color:#64748B;margin-top:4px">{r.get('snippet','')[:120]}</div>
                 </div>
                 """, unsafe_allow_html=True)
         else:
@@ -233,10 +233,10 @@ if st.session_state.scraped and not st.session_state.analysis:
             for z in zomato[:10]:
                 icon = "🍴" if z.get("type") == "restaurant" else ("🏷" if z.get("type") == "collection" else "🌶")
                 st.markdown(f"""
-                <div style="background:white;border:1px solid #EAE0D5;border-left:3px solid #E23744;
+                <div style="background:white;border:1px solid #CBD5E1;border-left:3px solid #3B82F6;
                             border-radius:8px;padding:8px 14px;margin-bottom:6px;
-                            font-size:13px;font-weight:600;color:#1C1410">
-                    {icon} {z.get('name','')} <span style="font-size:10px;color:#78716C;font-weight:400">[{z.get('type','')}]</span>
+                            font-size:13px;font-weight:600;color:#0F2044">
+                    {icon} {z.get('name','')} <span style="font-size:10px;color:#64748B;font-weight:400">[{z.get('type','')}]</span>
                 </div>
                 """, unsafe_allow_html=True)
         else:
@@ -250,10 +250,10 @@ if st.session_state.scraped and not st.session_state.analysis:
         if articles:
             for a in articles[:6]:
                 st.markdown(f"""
-                <div style="background:white;border:1px solid #EAE0D5;border-left:3px solid #138808;
+                <div style="background:white;border:1px solid #CBD5E1;border-left:3px solid #0369A1;
                             border-radius:8px;padding:8px 14px;margin-bottom:6px;">
-                    <div style="font-size:12px;font-weight:700;color:#1C1410">{a.get('headline','')}</div>
-                    <div style="font-size:10px;color:#78716C;margin-top:2px">📰 {a.get('source','')}</div>
+                    <div style="font-size:12px;font-weight:700;color:#0F2044">{a.get('headline','')}</div>
+                    <div style="font-size:10px;color:#64748B;margin-top:2px">📰 {a.get('source','')}</div>
                 </div>
                 """, unsafe_allow_html=True)
         else:
@@ -343,15 +343,15 @@ with tab1:
                     "Growth %":   i.get("growth_pct", 0),
                     "Status":     i.get("status", "rising"),
                 } for i in ings])
-                color_map = {"hot": "#FF6B00", "rising": "#F5A623", "steady": "#138808"}
+                color_map = {"hot": "#1D4ED8", "rising": "#60A5FA", "steady": "#94A3B8"}
                 fig = px.bar(df, x="Growth %", y="Ingredient", orientation="h",
                              color="Status", color_discrete_map=color_map,
                              template="simple_white",
                              labels={"Growth %": "Growth vs Last Week (%)"})
                 fig.update_layout(height=350, margin=dict(l=0,r=0,t=20,b=0),
-                                  showlegend=True, plot_bgcolor="#FAF7F2",
-                                  paper_bgcolor="#FAF7F2",
-                                  font=dict(family="Syne"))
+                                  showlegend=True, plot_bgcolor="#F0F4F8",
+                                  paper_bgcolor="#F0F4F8",
+                                  font=dict(family="Inter"))
                 st.plotly_chart(fig, use_container_width=True)
 
         # ── Hashtag Grid ──
@@ -379,10 +379,10 @@ with tab1:
                     if google:
                         for r in google[:10]:
                             st.markdown(f"""
-                            <div style="background:#FAF7F2;border-left:3px solid #FF6B00;
+                            <div style="background:#F0F4F8;border-left:3px solid #3B82F6;
                                         border-radius:6px;padding:8px 12px;margin-bottom:6px;">
                                 <div style="font-weight:700;font-size:12px">{r.get('title','')}</div>
-                                <div style="font-size:11px;color:#78716C">{r.get('snippet','')[:100]}</div>
+                                <div style="font-size:11px;color:#64748B">{r.get('snippet','')[:100]}</div>
                             </div>""", unsafe_allow_html=True)
                     else:
                         st.caption("No Google results (may have been blocked)")
@@ -453,8 +453,8 @@ with tab2:
             for i, (col, ing) in enumerate(zip(cols, top_ings)):
                 with col:
                     st.markdown(f"""
-                    <div style="background:#FFF4EC;border:1.5px solid #FF6B00;border-radius:12px;
-                                padding:14px;text-align:center;font-weight:700;color:#CC5200">
+                    <div style="background:#DBEAFE;border:1.5px solid #3B82F6;border-radius:12px;
+                                padding:14px;text-align:center;font-weight:700;color:#1D4ED8">
                         ✦ {ing}
                     </div>""", unsafe_allow_html=True)
 
@@ -481,7 +481,7 @@ with tab2:
                         <div>
                           <div class="dish-badge {badge_cls}">{badge_lbl}</div>
                           <div class="dish-name">{dish.get('dish_name','')}</div>
-                          <div style="font-size:11px;color:#FF6B00;margin-top:4px">
+                          <div style="font-size:11px;color:#3B82F6;margin-top:4px">
                             🔑 {dish.get('key_trending_ingredient','')}
                           </div>
                         </div>
@@ -491,26 +491,26 @@ with tab2:
                         </div>
                       </div>
                       <div class="dish-desc">{dish.get('description','')}</div>
-                      <hr style="border-color:#EAE0D5;margin:10px 0">
+                      <hr style="border-color:#CBD5E1;margin:10px 0">
                       <table style="width:100%;font-size:12px;border-collapse:collapse">
                         <tr>
-                          <td style="color:#78716C;padding:3px 0">🏠 Inspired By</td>
+                          <td style="color:#64748B;padding:3px 0">🏠 Inspired By</td>
                           <td style="font-weight:600;text-align:right">{dish.get('inspired_by','—')}</td>
                         </tr>
                         <tr>
-                          <td style="color:#78716C;padding:3px 0">💸 Food Cost</td>
+                          <td style="color:#64748B;padding:3px 0">💸 Food Cost</td>
                           <td style="font-weight:600;text-align:right">{dish.get('food_cost_level','')} · {dish.get('estimated_food_cost_inr','')}</td>
                         </tr>
                         <tr>
-                          <td style="color:#78716C;padding:3px 0">📈 Gross Margin</td>
-                          <td style="font-weight:600;text-align:right;color:#138808">{dish.get('gross_margin_pct','')}</td>
+                          <td style="color:#64748B;padding:3px 0">📈 Gross Margin</td>
+                          <td style="font-weight:600;text-align:right;color:#1D4ED8">{dish.get('gross_margin_pct','')}</td>
                         </tr>
                         <tr>
-                          <td style="color:#78716C;padding:3px 0">⏱ Prep Time</td>
+                          <td style="color:#64748B;padding:3px 0">⏱ Prep Time</td>
                           <td style="font-weight:600;text-align:right">{dish.get('prep_time_mins','')} mins</td>
                         </tr>
                         <tr>
-                          <td style="color:#78716C;padding:3px 0">🍽 Best Served</td>
+                          <td style="color:#64748B;padding:3px 0">🍽 Best Served</td>
                           <td style="font-weight:600;text-align:right">{dish.get('best_served','')}</td>
                         </tr>
                       </table>
