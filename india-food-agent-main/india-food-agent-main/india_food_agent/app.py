@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 # ── Page Config ──────────────────────────
 st.set_page_config(
-    page_title="🍽 MenuPulse — India Food Intelligence",
+    page_title="🍽 MenuPulse",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -170,7 +170,7 @@ with st.sidebar:
     scan_btn = st.button("📡 Scan Trends", use_container_width=True, type="secondary")
     gen_btn  = st.button("🤖 Generate Specials", use_container_width=True, type="primary")
     st.markdown("---")
-    st.caption("**Stack:** Python · BeautifulSoup · Claude AI · Streamlit")
+    st.caption("**Stack:** best agent")
     st.caption("**Sources:** Google · Zomato · Times Food · Instagram")
 
 
